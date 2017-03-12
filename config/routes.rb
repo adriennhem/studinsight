@@ -1,11 +1,11 @@
 class SubdomainPresent
   def self.matches?(request)
-    request.subdomain.present? && request.subdomain != "www"
+    request.subdomain.present?
   end
 end
 class SubdomainBlank
   def self.matches?(request)
-    request.subdomain().blank?  || request.subdomain == "www"
+    request.subdomain().blank?
   end
 end
 
@@ -13,6 +13,7 @@ end
 Rails.application.routes.draw do
 	
 	constraints(SubdomainPresent) do
+    root 'static_pages#home'
     devise_for :users
     resources :users, only: :index
   end

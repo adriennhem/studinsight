@@ -3,19 +3,19 @@ class ApplicationController < ActionController::Base
 
   before_action :load_schema, :authenticate_user!
 
-  private
+  protected
 
  def load_schema
-  Apartment::Tenant.switch!('public')
-  return unless request.subdomain.present?
+    Apartment::Tenant.switch!('public')
+    return unless request.subdomain.present?
 
-  account = Account.find_by(subdomain: request.subdomain)
-  if account 
-    Apartment::Tenant.switch!(request.subdomain)
-  else
-    redirect_to root_url(subdomain: false)
+    account = Account.find_by(subdomain: request.subdomain)
+    if account 
+      Apartment::Tenant.switch!(request.subdomain)
+    else
+      redirect_to root_url(subdomain: false)
+    end
   end
-end
 
   def after_sign_out_path_for(resource_or_scope)
   	new_user_session_path
