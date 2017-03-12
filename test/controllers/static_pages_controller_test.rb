@@ -5,6 +5,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :success
     assert_select "title", "Home | Student success platform" 
+    assert_select "a[href=?]", "/signup"
   end
 
   test "should get contact" do
