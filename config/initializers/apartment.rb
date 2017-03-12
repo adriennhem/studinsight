@@ -89,6 +89,6 @@ end
 # }
 
 # Rails.application.config.middleware.use 'Apartment::Elevators::Domain'
-Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
-Apartment::Elevators::Subdomain.prepend RescuedApartmentMiddleware
+# Rails.application.config.middleware.use 'Apartment::Elevators::Subdomain'
+# Apartment::Elevators::Subdomain.prepend RescuedApartmentMiddleware
 # Rails.application.config.middleware.use 'Apartment::Elevators::FirstSubdomain'
