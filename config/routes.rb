@@ -1,11 +1,11 @@
 class SubdomainPresent
   def self.matches?(request)
-    request.subdomain.present?
+    request.subdomain.present? && request.subdomain != "www"
   end
 end
 class SubdomainBlank
   def self.matches?(request)
-    request.subdomain().blank?
+    request.subdomain().blank?  || request.subdomain == "www"
   end
 end
 
